@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", system-ui, sans-serif;
+}
+
+/* ===== Shared keyframes used across pages ===== */
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 1.6s ease-out infinite;
+  transform-origin: center;
+}
+.pulse-ring.delay {
+  animation-delay: 0.8s;
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (min-width: 550px) and (max-width: 699px) {
+  .step-card-last {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 14px);
+  }
+}
+
+@keyframes scroll-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes scroll-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.tcol-track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tgap, 20px);
+  will-change: transform;
+}
+.tcol-up {
+  animation: scroll-up 42s linear infinite;
+}
+.tcol-down {
+  animation: scroll-down 42s linear infinite;
+}
+.tcol:hover .tcol-track {
+  animation-play-state: paused;
+}
+.tcard {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.tcard:hover {
+  transform: scale(1.04);
+  box-shadow: 0 16px 40px rgba(26, 123, 232, 0.22);
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 899px) {
+  .tcol {
+    width: 100%;
+    overflow: hidden;
+  }
+  .tcol-track {
+    flex-direction: row;
+    width: max-content;
+  }
+  .tcol-up {
+    animation: scroll-left 48s linear infinite;
+  }
+  .tcol-down {
+    animation: scroll-right 48s linear infinite;
+  }
+  .tcard {
+    width: clamp(260px, 78vw, 340px);
+    flex-shrink: 0;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-8px) scale(1.08);
+  }
+  65% {
+    transform: translateY(2px) scale(0.97);
+  }
+  85% {
+    transform: translateY(-3px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes fade-slide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Tablet fine-tuning for About Us section */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .about-section {
+    padding-top: clamp(36px, 5vw, 56px);
+    padding-bottom: clamp(36px, 5vw, 56px);
+  }
+  .about-heading {
+    font-size: clamp(20px, 2.6vw, 30px) !important;
+  }
+  .about-image-wrap {
+    max-width: 420px !important;
+  }
+  .about-image-bottom {
+    width: 82% !important;
+  }
+  .about-image-top {
+    width: clamp(140px, 28vw, 220px) !important;
+  }
+  .about-rule {
+    width: clamp(220px, 36vw, 340px) !important;
+  }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(28px, 3vw, 48px) !important;
+  }
+  .about-image-wrap {
+    max-width: 100% !important;
+  }
+  .about-image-bottom {
+    width: 92% !important;
+  }
+  .about-image-top {
+    width: clamp(150px, 30vw, 240px) !important;
+  }
+}
