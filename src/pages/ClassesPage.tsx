@@ -82,14 +82,14 @@ export function ClassesPage() {
       <section className="w-full px-4 py-6 sm:px-6 lg:px-8">
         <div
           className={cn(
-            "grid gap-4 rounded-[1.5rem] border p-4 shadow-lg sm:p-5 lg:grid-cols-[260px_1fr]",
+            "grid gap-4 rounded-[1.5rem] border p-4 shadow-lg sm:p-5 lg:grid-cols-[260px_1fr] lg:items-start",
             theme === "light" ? "border-slate-200 bg-white shadow-slate-200/60" : "border-slate-800 bg-slate-900 shadow-black/20",
           )}
         >
           {/* Filter panel */}
           <aside
             ref={filterRef}
-            className={cn("hidden pr-2 lg:sticky lg:top-36 lg:block lg:max-h-[calc(100vh-160px)] lg:self-start lg:overflow-y-auto")}
+            className={cn("hidden pr-2 lg:sticky lg:top-[157px] lg:block lg:max-h-[calc(100vh-173px)] lg:self-start lg:overflow-y-auto")}
           >
             <FilterOptions
               theme={theme}
@@ -101,7 +101,12 @@ export function ClassesPage() {
 
           {/* Content panel */}
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+            <div
+              className={cn(
+                "sticky top-[157px] z-20 -mx-4 flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:-mx-5 sm:px-5",
+                theme === "light" ? "bg-white" : "bg-slate-900",
+              )}
+            >
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 <button
                   type="button"
